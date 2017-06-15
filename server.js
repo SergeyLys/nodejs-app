@@ -44,4 +44,3 @@ app.use('/api', checkToken, userRoute);
 app.use(getUser);
 
 app.use(errorHandler);
-
