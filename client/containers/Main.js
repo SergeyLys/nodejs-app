@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import App from '../components/App';
+import RegisterForm from '../components/RegisterForm';
 
 const mapStateToProps = state => ({
-
+    testStore: state
 });
 
 const mapDispatchToProps =  dispatch => ({
-
+    onSubmit: (data) => {
+        dispatch({type: 'SIGN', payload: data});
+    }
 });
 
-export default connect( mapStateToProps, mapDispatchToProps )(App);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
