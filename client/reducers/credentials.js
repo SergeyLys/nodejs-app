@@ -5,7 +5,11 @@ const initialState = {
 
 export default function credentials(state = initialState, action) {
     switch (action.type) {
-        case 'SIGN':
+        case 'SIGNIN':
+            console.log(action.payload);
+            return action.payload;
+            break;
+        case 'SIGNUP':
             console.log(action.payload);
             return action.payload;
             break;

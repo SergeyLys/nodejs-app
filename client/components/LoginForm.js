@@ -1,7 +1,10 @@
 import React from 'react';
 import SignMenu from './SignMenu';
 
-export default class RegisterForm extends React.Component {
+export default class LoginFrom extends React.Component {
+    constructor() {
+        super();
+    }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -18,11 +21,10 @@ export default class RegisterForm extends React.Component {
         };
 
         xhr.send(`login=${this.loginInput.value}&password=${this.passwordInput.value}`);
-
     }
 
     render() {
-        console.log('register');
+        console.log('login');
         return(
             <div>
                 <SignMenu/>
