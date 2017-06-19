@@ -1,4 +1,5 @@
 import React from 'react';
+import config from '../../config';
 import SignMenu from './SignMenu';
 
 export default class LoginFrom extends React.Component {
@@ -10,28 +11,34 @@ export default class LoginFrom extends React.Component {
         event.preventDefault();
 
         const xhr = new XMLHttpRequest();
+        var token;
+        var _that = this;
 
-        xhr.open('POST', 'http://localhost:8000/api/signin', true);
+        xhr.open('POST', `${config.host}/api/signin`, true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
         xhr.onreadystatechange = function() {
             if(xhr.readyState == 4 && xhr.status == 200) {
-                console.log(xhr.responseText);
+                token = xhr.responseText;
+                _that.props.onSubmit(token);
+            } else if(xhr.readyState == 4 && xhr.status !== 200) {
+                console.log(JSON.parse(xhr.responseText));
             }
         };
 
         xhr.send(`login=${this.loginInput.value}&password=${this.passwordInput.value}`);
+
+        console.log('sending');
+
     }
 
     render() {
-        console.log('login');
         return(
             <div>
-                <SignMenu/>
                 <form onSubmit={::this.handleSubmit}>
                     <input ref={(input) => { this.loginInput = input }} name="login" type="text"/>
                     <input ref={(input) => { this.passwordInput = input }} name="password" type="text"/>
-                    <button>Signup</button>
+                    <button>Signin</button>
                 </form>
             </div>
         )

@@ -7,8 +7,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps =  dispatch => ({
-    onSubmit: (data) => {
-        dispatch({type: 'SIGNIN', payload: data});
+    onSubmit: (token) => {
+        dispatch({type: 'SIGNIN', payload: token});
     }
 });
 

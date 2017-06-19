@@ -5,6 +5,8 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import bluebird from 'bluebird';
 import cors from 'cors';
+import path from 'path';
+import fs from 'fs';
 
 import config from './config';
 import authRoute from './routes/auth';
@@ -23,11 +25,14 @@ mongoose.connect(config.database, err => {
     console.log('Mongo connected');
 });
 
+
 app.listen(config.port, err => {
     if (err) throw err;
 
     console.log('Server is up and listening on port ' + config.port);
 });
+
+
 
 app.use(cors({origin: '*'}));
 app.use(morgan('tiny'));
@@ -42,5 +47,10 @@ app.use(session({
 app.use('/api', authRoute);
 app.use('/api', checkToken, userRoute);
 app.use(getUser);
+
+app.use(express.static(__dirname + '/public'));
+app.get(/.*/, function (request, response){
+    response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+});
 
 app.use(errorHandler);
