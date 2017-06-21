@@ -4,7 +4,6 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from '../reducers';
 
-// import Main from '../containers/Main';
 import Main from './Main';
 import Home from './Home';
 import LoginFormContainer from '../containers/LoginFormContainer';
@@ -15,7 +14,6 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const history = syncHistoryWithStore(hashHistory, store);
-
 
 
 export default class App extends React.Component {
