@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import reducer from '../reducers';
 
 // import Main from '../containers/Main';
-import Home from './Home';
 import Main from './Main';
+import Home from './Home';
 import LoginFormContainer from '../containers/LoginFormContainer';
 import RegisterFormContainer from '../containers/RegisterFormContainer';
 
@@ -28,7 +28,7 @@ export default class App extends React.Component {
             <Provider store={store}>
                 <Router history={history}>
                     <Route path='/' component={Main}>
-                        <IndexRoute component={Home} onEnter={Home.onEnter} />
+                        <IndexRoute component={Home} />
                         <Route path='login' component={LoginFormContainer} />
                         <Route path='register' component={RegisterFormContainer} />
                     </Route>

@@ -6,15 +6,9 @@ import morgan from 'morgan';
 import bluebird from 'bluebird';
 import cors from 'cors';
 import path from 'path';
-import fs from 'fs';
-
 import config from './config';
 import authRoute from './routes/auth';
-import userRoute from './routes/user';
-
 import errorHandler from './middlewares/errorHandler';
-import checkToken from './middlewares/checkToken';
-import getUser from './middlewares/getUser';
 
 const app = express();
 
@@ -45,8 +39,6 @@ app.use(session({
 }));
 
 app.use('/api', authRoute);
-app.use('/api', checkToken, userRoute);
-app.use(getUser);
 
 app.use(express.static(__dirname + '/public'));
 app.get(/.*/, function (request, response){

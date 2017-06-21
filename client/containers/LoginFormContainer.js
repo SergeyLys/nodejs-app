@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import LoginForm from '../components/LoginForm';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
     testStore: state
 });
 
 const mapDispatchToProps =  dispatch => ({
-    onSubmit: (token) => {
-        dispatch({type: 'SIGNIN', payload: token});
+    onSubmit: (data) => {
+        dispatch({type: 'SIGNIN', payload: data});
     }
 });
 

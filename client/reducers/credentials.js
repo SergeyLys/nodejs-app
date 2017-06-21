@@ -1,17 +1,15 @@
 const initialState = {
-    login: '',
-    password: ''
+    token: window.localStorage.getItem('token') || ''
 };
 
 export default function credentials(state = initialState, action) {
     switch (action.type) {
         case 'SIGNIN':
-            console.log(action.payload);
-            return action.payload;
+            window.localStorage.setItem('token', action.payload);
+            return {...state, token: action.payload};
             break;
         case 'SIGNUP':
-            console.log(action.payload);
-            return action.payload;
+            return {...state, token: action.payload};
             break;
         default:
             return state;

@@ -1,6 +1,6 @@
 import React from 'react';
 import config from '../../config';
-import SignMenu from './SignMenu';
+import { hashHistory } from 'react-router';
 
 export default class RegisterForm extends React.Component {
 
@@ -12,9 +12,9 @@ export default class RegisterForm extends React.Component {
         xhr.open('POST', `${config.host}/api/signup`, true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = () => {
             if(xhr.readyState == 4 && xhr.status == 200) {
-                console.log(xhr.responseText);
+                this.props.onSubmit(JSON.parse(xhr.responseText));
             }
         };
 
@@ -22,8 +22,13 @@ export default class RegisterForm extends React.Component {
 
     }
 
+    componentWillReceiveProps(newprops) {
+        if (newprops.testStore.credentials.token != '') {
+            hashHistory['replace']('/login');
+        }
+    }
+
     render() {
-        console.log('register');
         return(
             <div>
                 <form onSubmit={::this.handleSubmit}>

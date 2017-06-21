@@ -10,7 +10,6 @@ export default class SignMenu extends React.Component {
         return(
             <div>
                 <Link to="/">Home</Link>
-                <Link to="/register">Signup</Link>
                 <Link to="/login">Signin</Link>
             </div>
         )

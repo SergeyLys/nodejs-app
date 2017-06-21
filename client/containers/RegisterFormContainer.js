@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import RegisterForm from '../components/RegisterForm';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
     testStore: state
 });
 

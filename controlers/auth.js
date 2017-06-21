@@ -15,7 +15,14 @@ export const signup = async (req, res, next)=> {
         });
     }
 
-    res.json(user);
+    const { login, password } = req.body;
+
+    user = await User.findOne({ login });
+
+    // res.json(user);
+
+    const token = jwt.sign({ _id: user._id }, config.secret);
+    res.json(token);
 };
 
 export const signin = async (req, res, next)=> {
