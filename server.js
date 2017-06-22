@@ -29,6 +29,9 @@ app.listen(config.port, err => {
 
 
 app.use(cors({origin: '*'}));
+app.use(morgan('tiny'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
     resave: true,
     saveUninitialized: true,

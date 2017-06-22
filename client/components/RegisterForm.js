@@ -1,6 +1,6 @@
 import React from 'react';
 import config from '../../config';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 export default class RegisterForm extends React.Component {
 
@@ -24,7 +24,7 @@ export default class RegisterForm extends React.Component {
 
     componentWillReceiveProps(newprops) {
         if (newprops.testStore.credentials.token != '') {
-            hashHistory['replace']('/login');
+            browserHistory['replace']('/login');
         }
     }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import config from '../../config';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 export default class Home extends React.Component {
     constructor() {
@@ -9,7 +9,7 @@ export default class Home extends React.Component {
 
     componentWillMount() {
         if (window.localStorage.getItem('token') == null) {
-            hashHistory['replace']('/login');
+            browserHistory['replace']('/login');
         }
     }
 

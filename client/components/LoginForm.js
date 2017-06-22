@@ -1,7 +1,7 @@
 import React from 'react';
 import config from '../../config';
 import { Link } from 'react-router';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 export default class LoginFrom extends React.Component {
     constructor() {
@@ -23,7 +23,7 @@ export default class LoginFrom extends React.Component {
         xhr.onreadystatechange = ()=> {
             if(xhr.readyState == 4 && xhr.status == 200) {
                 this.props.onSubmit(JSON.parse(xhr.responseText));
-                hashHistory['replace']('/');
+                browserHistory['replace']('/');
             } else if(xhr.readyState == 4 && xhr.status !== 200) {
                 this.setState({status: JSON.parse(xhr.responseText).message});
             }

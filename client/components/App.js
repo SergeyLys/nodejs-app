@@ -9,11 +9,11 @@ import Home from './Home';
 import LoginFormContainer from '../containers/LoginFormContainer';
 import RegisterFormContainer from '../containers/RegisterFormContainer';
 
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-const history = syncHistoryWithStore(hashHistory, store);
+const history = syncHistoryWithStore(browserHistory, store);
 
 
 export default class App extends React.Component {
